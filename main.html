@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kavya's Creative Portfolio</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #00bfff;
+            --dark-bg: #0a0a0a;
+            --card-dark-bg: #1c1c1c;
+            --text-white: #ffffff;
+            --text-light-gray: #e0e0e0;
+            --accent-gradient-start: #00bfff;
+            --accent-gradient-end: #1e90ff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #2a2a2a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-blue);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-gradient-end);
+        }
+
+        .header-bg {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #000000 100%);
+        }
+        .section-title {
+            position: relative;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            color: var(--text-white);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+        }
+        .section-title::before {
+            content: 'O ';
+            color: var(--primary-blue);
+            font-size: 0.8em;
+            vertical-align: middle;
+            margin-right: 5px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-blue);
+            border-radius: 2px;
+        }
+        .card {
+            background-color: var(--card-dark-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: var(--text-light-gray);
+            border: 1px solid rgba(0, 191, 255, 0.1);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            border-color: var(--primary-blue);
+        }
+        .project-card img {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            object-fit: cover;
+            height: 200px;
+            filter: brightness(0.8) contrast(1.2);
+        }
+        .skill-badge {
+            background-color: rgba(0, 191, 255, 0.2);
+            color: var(--primary-blue);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            display: inline-flex;
+            align-items: center;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            border: 1px solid var(--primary-blue);
+        }
+        .skill-badge:hover {
+            background-color: var(--primary-blue);
+            color: var(--text-white);
+        }
+        .btn-primary {
+            background: linear-gradient(45deg, var(--accent-gradient-start) 0%, var(--accent-gradient-end) 100%);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 191, 255, 0.4);
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 191, 255, 0.6);
+        }
+        .btn-secondary {
+            background: linear-gradient(45deg, #333333 0%, #1a1a1a 100%);
+            color: var(--text-light-gray);
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            border: 1px solid #444;
+        }
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+
+        .nav-link {
+            transition: color 0.3s ease;
+            color: var(--text-light-gray);
+        }
+        .nav-link:hover {
+            color: var(--primary-blue);
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid var(--primary-blue);
+            box-shadow: 0 0 0 10px rgba(0, 191, 255, 0.2);
+            animation: pulse 2s infinite alternate;
+        }
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%) brightness(0.8);
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 191, 255, 0.2); }
+            100% { transform: scale(1.02); box-shadow: 0 0 0 15px rgba(0, 191, 255, 0); }
+        }
+
+        .typing-text {
+            display: inline-block;
+            min-height: 1.5em;
+        }
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1.2em;
+            background-color: var(--primary-blue);
+            margin-left: 5px;
+            animation: blink-caret 0.75s step-end infinite;
+        }
+        @keyframes blink-caret {
+            from, to { background-color: transparent }
+            50% { background-color: var(--primary-blue); }
+        }
+
+        .outline-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 2px var(--text-white);
+            text-stroke: 2px var(--text-white);
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.3);
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .modal.show {
+            display: flex;
+            opacity: 1;
+        }
+        .modal-content {
+            background-color: var(--card-dark-bg);
+            color: var(--text-light-gray);
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 700px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+            border: 1px solid var(--primary-blue);
+        }
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+        .close-button {
+            color: var(--text-light-gray);
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--primary-blue);
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-content h3 {
+            color: var(--primary-blue);
+        }
+        .modal-content ul li {
+            color: var(--text-light-gray);
+        }
+        .modal-content strong {
+            color: var(--primary-blue);
+        }
+
+        .contact-input {
+            background-color: #2a2a2a;
+            border: 1px solid #444;
+            color: var(--text-white);
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(0, 191, 255, 0.3);
+        }
+
+        .achievement-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background-color: var(--card-dark-bg);
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0, 191, 255, 0.1);
+        }
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border-color: var(--primary-blue);
+        }
+        .achievement-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            min-width: 4rem;
+            text-align: center;
+        }
+        .achievement-card h3 {
+            color: var(--text-white);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .achievement-card p {
+            color: var(--text-light-gray);
+        }
+
+        .certification-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: var(--card-dark-bg);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid rgba(0, 191, 255, 0.05);
+        }
+        .certification-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary-blue);
+        }
+        .certification-icon {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            min-width: 2.5rem;
+            text-align: center;
+        }
+        .certification-item h4 {
+            color: var(--text-white);
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+        .certification-item p {
+            color: var(--text-light-gray);
+            font-size: 0.9rem;
+        }
+
+        #scrollToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 99;
+            border: none;
+            outline: none;
+            background-color: var(--primary-blue);
+            color: white;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(0, 191, 255, 0.4);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: var(--accent-gradient-end);
+            transform: translateY(-3px);
+        }
+
+        .header-bg {
+            position: relative;
+            overflow: hidden;
+        }
+        .header-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top left, rgba(0, 191, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at bottom right, rgba(30, 144, 255, 0.1) 0%, transparent 50%);
+            z-index: 0;
+            pointer-events: none;
+            animation: background-pan 10s infinite alternate linear;
+        }
+
+        @keyframes background-pan {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-900 shadow-lg py-4 fixed w-full z-50 top-0">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <a href="#" class="text-2xl font-extrabold text-white">Kavya<span class="text-primary-blue">.</span></a>
+            <div class="space-x-6 hidden md:flex">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#achievements" class="nav-link">Achievements</a>
+                <a href="#certifications" class="nav-link">Certifications</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden focus:outline-none text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 py-2 shadow-inner">
+            <a href="#about" class="block px-4 py-2 text-white hover:bg-gray-700">About</a>
+            <a href="#skills" class="block px-4 py-2 text-white hover:bg-gray-700">Skills</a>
+            <a href="#experience" class="block px-4 py-2 text-white hover:bg-gray-700">Experience</a>
+            <a href="#projects" class="block px-4 py-2 text-white hover:bg-gray-700">Projects</a>
+            <a href="#achievements" class="block px-4 py-2 text-white hover:bg-gray-700">Achievements</a>
+            <a href="#certifications" class="block px-4 py-2 text-white hover:bg-gray-700">Certifications</a>
+            <a href="#contact" class="block px-4 py-2 text-white hover:bg-gray-700">Contact</a>
+            <!-- Download Resume Button for Mobile -->
+            <a href="https://drive.google.com/file/d/1qCs2Kgq8nQroRzMmfnDObnz0stLp69cj/view?usp=sharing" target="_blank" download="Kavya_Resume.pdf" class="block px-4 py-2 text-white hover:bg-gray-700">Download Resume <i class="fas fa-download ml-2"></i></a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="header-bg text-white py-20 md:py-32 flex items-center justify-center min-h-screen-minus-nav mt-16">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center text-center md:text-left gap-8 md:gap-16 relative z-10">
+            <!-- Left Side: Provided Image -->
+            <div class="hero-image-container animate-on-scroll">
+                <img src="https://cdn.leonardo.ai/users/9d665d25-0e47-43e5-bf4f-671d7df03dae/generations/7099ba37-3602-42b1-ae0f-b6e9515eed45/Leonardo_Anime_XL_A_professional_4K_portrait_of_a_confident_yo_1.jpg" alt="Kavya's Portrait" class="hero-image">
+            </div>
+
+            <!-- Right Side: Name and Dynamic Text -->
+            <div class="flex flex-col items-center md:items-start animate-on-scroll">
+                <h1 class="text-5xl md:text-6xl font-extrabold mb-4 leading-tight outline-text">
+                    KORIPUDI KAVYANJALI
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 font-medium text-light-gray">
+                    <span class="typing-text"></span><span class="typing-cursor">|</span>
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#projects" class="btn-primary inline-block">View My Work <i class="fas fa-arrow-right ml-2"></i></a>
+                    <!-- Download Resume Button added here -->
+                    <a href="https://drive.google.com/file/d/1qCs2Kgq8nQroRzMmfnDObnz0stLp69cj/view?usp=sharing" target="_blank" download="Kavya_Resume.pdf" class="btn-secondary inline-block">Download Resume <i class="fas fa-download ml-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="w-full px-20 py-12">
+
+        <!-- About Section -->
+        <section id="about" class="my-32 animate-on-scroll">
+            <h2 class="text-4xl section-title">About Me</h2>
+            <div class="card p-8">
+                <p class="text-lg text-light-gray mb-4">
+                    Greetings! I'm Kavya, a passionate and driven Bachelor of Technology student specializing in Electronics and Communication Engineering. My academic journey has been a dynamic exploration of core engineering principles, complemented by hands-on experience in cutting-edge technologies. I am deeply fascinated by the intersection of hardware and software, and I thrive on transforming complex ideas into tangible solutions.
+                </p>
+                <p class="text-lg text-light-gray mb-4">
+                    My expertise spans across web technologies, cloud computing, and intelligent systems. My certifications in ServiceNow, along with strong proficiencies in Java, Python, and SQL, underscore my commitment to continuous learning and professional growth.
+                </p>
+                <p class="text-lg text-light-gray">
+                    I am a proactive problem-solver who enjoys collaborating with teams to achieve shared goals. My dedication to innovation and my ability to adapt to new technologies make me a versatile asset in any challenging environment. I am always eager to contribute my skills to impactful projects and embark on new learning adventures.
+                </p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="my-32 animate-on-scroll">
+            <h2 class="text-4xl section-title">Skills Summary</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="card p-6">
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Languages</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-badge"><i class="fas fa-code mr-2"></i>Python</span>
+                        <span class="skill-badge"><i class="fas fa-code mr-2"></i>Java</span>
+                        <span class="skill-badge"><i class="fas fa-database mr-2"></i>SQL</span>
+                        <span class="skill-badge"><i class="fas fa-file-code mr-2"></i>HTML</span>
+                        <span class="skill-badge"><i class="fas fa-paint-brush mr-2"></i>CSS</span>
+                    </div>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Developer Tools</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-badge"><i class="fas fa-laptop-code mr-2"></i>VS Code</span>
+                        <span class="skill-badge"><i class="fas fa-microchip mr-2"></i>Arduino IDE</span>
+                        <span class="skill-badge"><i class="fas fa-file-alt mr-2"></i>MS Office</span>
+                    </div>
+                </div>
+                <div class="card p-6">
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Technologies</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-badge"><i class="fas fa-database mr-2"></i>MySQL</span>
+                        <span class="skill-badge"><i class="fas fa-cloud mr-2"></i>ServiceNow</span>
+                    </div>
+                </div>
+                <div class="card p-6 col-span-1 md:col-span-2 lg:col-span-3">
+                    <h3 class="text-2xl font-semibold mb-4 text-white">Soft Skills</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-badge"><i class="fas fa-comments mr-2"></i>Communication Skills</span>
+                        <span class="skill-badge"><i class="fas fa-users mr-2"></i>Teamwork</span>
+                        <span class="skill-badge"><i class="fas fa-lightbulb mr-2"></i>Problem Solving</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="my-32 animate-on-scroll">
+            <h2 class="text-4xl section-title">Experience</h2>
+            <div class="space-y-8">
+                <div class="card p-8">
+                    <h3 class="text-2xl font-semibold text-primary-blue">Cloud Intern <span class="text-light-gray text-lg ml-2">@ YHills</span></h3>
+                    <p class="text-light-gray mb-4">January 2024 - February 2024</p>
+                    <p class="text-light-gray">
+                        During my internship at YHills, I gained a substantial understanding of various cloud computing topics, with a primary focus on Azure Cloud. This experience allowed me to apply theoretical knowledge through practical projects, significantly enhancing my hands-on experience in cloud technologies and data visualization using Power BI. My work involved exploring cloud services, understanding their applications, and contributing to data-driven insights.
+                    </p>
+                </div>
+                <div class="card p-8">
+                    <h3 class="text-2xl font-semibold text-primary-blue">Intern <span class="text-light-gray text-lg ml-2">@ APSCHE-HQL EDUTECH</span></h3>
+                    <p class="text-light-gray mb-4">May 2023 - June 2023</p>
+                    <p class="text-light-gray">
+                        As an intern at APSCHE-HQL EDUTECH, I gained proficiency in essential web technologies and SQL. This involved enhancing my coding skills and database management capabilities through a series of hands-on projects and interactive learning modules. Beyond technical skills, I also focused on developing crucial soft skills, including communication and teamwork, which are vital for building a strong foundation in Electronics and Communication Engineering.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="my-32 animate-on-scroll">
+            <h2 class="text-4xl section-title">My Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-card card pb-6">
+                    <img src="https://placehold.co/600x400/1a1a1a/00bfff?text=Job+Portal+Project" alt="Job Portal Project" class="w-full">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Job Portal Project in ServiceNow</h3>
+                        <p class="text-light-gray mb-4">
+                            Created a basic job portal using ServiceNow that allows users to view job openings and apply by submitting their resumes and application details.
+                        </p>
+                        <div class="flex flex-wrap mb-4">
+                            <span class="skill-badge">ServiceNow</span>
+                            <span class="skill-badge">Job Portal</span>
+                            <span class="skill-badge">Forms</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <button class="btn-primary text-sm open-modal-btn" data-project="jobPortal">Learn More</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card card pb-6">
+                    <img src="https://placehold.co/600x400/1a1a1a/00bfff?text=Landmine+Detection+System" alt="Autonomous Landmine Detection" class="w-full">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Autonomous Landmine Detection</h3>
+                        <p class="text-light-gray mb-4">
+                            Created an IoT-based landmine detection system with ESP32, sensors, GPS, and real-time alerts for improved demining safety.
+                        </p>
+                        <div class="flex flex-wrap mb-4">
+                            <span class="skill-badge">IoT</span>
+                            <span class="skill-badge">ESP32</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <button class="btn-primary text-sm open-modal-btn" data-project="landmineDetection">Learn More</button>
+                            <a href="https://github.com/kavyanjali-prog1/Landmine-Detection" target="_blank" class="btn-secondary text-sm flex items-center justify-center">
+                                <i class="fab fa-github mr-2"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card card pb-6">
+                    <img src="https://placehold.co/600x400/1a1a1a/00bfff?text=Responsive+Shopping+Site" alt="Responsive Shopping Website" class="w-full">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3 text-white">Responsive Shopping Website</h3>
+                        <p class="text-light-gray mb-4">
+                            Developed a responsive portfolio and shopping site with interactive sections and a cart, enhancing user experience with modern web technologies.
+                        </p>
+                        <div class="flex flex-wrap mb-4">
+                            <span class="skill-badge">HTML</span>
+                            <span class="skill-badge">CSS</span>
+                            <span class="skill-badge">JavaScript</span>
+                            <span class="skill-badge">Bootstrap</span>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-3">
+                            <button class="btn-primary text-sm open-modal-btn" data-project="shoppingWebsite">Learn More</button>
+                            <a href="https://github.com/kavyanjali-prog1/Shopping-Website" target="_blank" class="btn-secondary text-sm flex items-center justify-center">
+                                <i class="fab fa-github mr-2"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements" class="my-32 animate-on-scroll">
+            <h2 class="text-4xl section-title">Achievements</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-trophy"></i></div>
+                    <div>
+                        <h3 class="text-white">Codechef Milestone</h3>
+                        <p>Surpassed 200+ problem-solving challenges on Codechef, demonstrating strong algorithmic and data structure skills.</p>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-star"></i></div>
+                    <div>
+                        <h3 class="text-white">Hackerrank 5-Star Accolades</h3>
+                        <p>Earned 5-star accolades on Hackerrank for both Java and Python, showcasing high proficiency in competitive programming.</p>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-certificate"></i></div>
+                    <div>
+                        <h3 class="text-white">J&J Hackathon Participant</h3>
+                        <p>Received a participation certificate in the J&J Hackathon Competition hosted on Unstop, engaging in intense problem-solving.</p>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-laptop-code"></i></div>
+                    <div>
+                        <h3 class="text-white">AB Tech Ville Hackathon</h3>
+                        <p>Participated in a 32-hour Hackathon organized by AB Tech Ville at BVC College of Engineering, Odalarevu, fostering innovation and teamwork.</p>
+                    </div>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon"><i class="fas fa-medal"></i></div>
+                    <div>
+                        <h3 class="text-white">Sports Champion</h3>
+                        <p>Secured first prize in Kabaddi and Throwball competitions conducted by BVC Engineering College, highlighting leadership and teamwork outside academics.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="my-32 animate-on-scroll">
+            <h2 class="text-4xl section-title">Certifications</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="certification-item">
+                    <div class="certification-icon"><i class="fas fa-award"></i></div>
+                    <div>
+                        <h4>Micro-Certification Welcome to ServiceNow</h4>
+                        <p>Issued by ServiceNow</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <div class="certification-icon"><i class="fas fa-award"></i></div>
+                    <div>
+                        <h4>Certified System Administrator (CSA)</h4>
+                        <p>Issued by ServiceNow</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <div class="certification-icon"><i class="fas fa-award"></i></div>
+                    <div>
+                        <h4>Certified Application Developer (CAD)</h4>
+                        <p>Issued by ServiceNow</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <div class="certification-icon"><i class="fas fa-award"></i></div>
+                    <div>
+                        <h4>Hackerrank Java (Basic)</h4>
+                        <p>Issued by Hackerrank</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <div class="certification-icon"><i class="fas fa-award"></i></div>
+                    <div>
+                        <h4>Infosys Springboard Python (Basic)</h4>
+                        <p>Issued by Infosys Springboard</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <div class="certification-icon"><i class="fas fa-award"></i></div>
+                    <div>
+                        <h4>Hackerrank SQL (Basic)</h4>
+                        <p>Issued by Hackerrank</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <div class="certification-icon"><i class="fas fa-award"></i></div>
+                    <div>
+                        <h4>Virtual Internship Certificate in Web Technologies, SQL, and Soft Skills</h4>
+                        <p>Issued by APSCHE-HQL EDUTECH</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <div class="certification-icon"><i class="fas fa-award"></i></div>
+                    <div>
+                        <h4>Certification on Digital Circuits</h4>
+                        <p>Issued by NPTEL</p>
+                    </div>
+                </div>
+                <div class="certification-item">
+                    <div class="certification-icon"><i class="fas fa-award"></i></div>
+                    <div>
+                        <h4>Certification on Digital Design Verilog</h4>
+                        <p>Issued by NPTEL</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="my-32 text-center animate-on-scroll">
+            <h2 class="text-4xl section-title mx-auto w-fit">Get In Touch</h2>
+            <p class="text-lg text-light-gray mb-8">
+                I'm always open to new opportunities, collaborations, and discussions about technology. Feel free to reach out through email or connect with me on LinkedIn!
+            </p>
+            <div class="max-w-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <input type="text" placeholder="Your Name" class="contact-input">
+                <input type="email" placeholder="Your Email" class="contact-input">
+                <input type="text" placeholder="Subject" class="contact-input md:col-span-2">
+                <textarea placeholder="Your Message" rows="5" class="contact-input md:col-span-2"></textarea>
+            </div>
+            <button type="submit" class="btn-primary inline-block">Send Message <i class="fas fa-paper-plane ml-2"></i></button>
+            <div class="flex justify-center space-x-6 mt-8">
+                <a href="mailto:kavyanjali.koripudi2004@gmail.com" class="btn-secondary flex items-center">
+                    <i class="fas fa-envelope mr-2"></i>
+                    Email Me
+                </a>
+                <a href="https://www.linkedin.com/in/koripudi-kavyanjali-5b7765232/" target="_blank" class="btn-secondary flex items-center">
+                    <i class="fab fa-linkedin mr-2"></i>
+                    LinkedIn
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-light-gray py-8 text-center">
+        <div class="container mx-auto px-4">
+            <p>&copy; 2025 Koripudi Kavyanjali. All rights reserved.</p>
+            <p class="text-sm mt-2">Designed with <i class="fas fa-heart text-blue-500"></i> using HTML, CSS & JavaScript</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button onclick="topFunction()" id="scrollToTopBtn" title="Go to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Modals for Project Details -->
+    <div id="aiChatbotModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 class="text-3xl font-bold mb-4">AI-Powered Customer Query Assistance</h3>
+            <p class="text-light-gray mb-4">
+                This project involved developing an intelligent chatbot designed to streamline customer support by providing instant and accurate responses to queries.
+                It leverages Natural Language Processing (NLP) to understand user intent and Machine Learning algorithms to continuously improve its response accuracy.
+            </p>
+            <p class="text-light-gray mb-4">
+                Key features include:
+            </p>
+            <ul class="list-disc list-inside text-light-gray mb-4">
+                <li><strong>Natural Language Understanding:</strong> Processes and interprets customer queries effectively.</li>
+                <li><strong>Machine Learning Integration:</strong> Uses trained models to identify intent and generate relevant responses.</li>
+                <li><strong>Personalized Support:</strong> Offers tailored solutions based on query context.</li>
+                <li><strong>Efficiency Improvement:</strong> Reduces response times and enhances customer satisfaction.</li>
+            </ul>
+            <p class="text-light-gray">
+                This project demonstrates my proficiency in developing AI-driven solutions and my understanding of modern chatbot architectures.
+            </p>
+        </div>
+    </div>
+
+    <div id="landmineDetectionModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 class="text-3xl font-bold mb-4">Autonomous Landmine Detection</h3>
+            <p class="text-light-gray mb-4">
+                This project focuses on creating an autonomous mobile robotic platform for the detection and location tracking of landmines, significantly improving safety in demining operations.
+                It integrates IoT capabilities with embedded sensor modules.
+            </p>
+            <p class="text-light-gray mb-4">
+                Components and functionalities:
+            </p>
+            <ul class="list-disc list-inside text-light-gray mb-4">
+                <li><strong>ESP32 Microcontroller:</strong> Central processing unit for sensor data and communication.</li>
+                <li><strong>Metal Detector:</strong> Identifies the presence of metallic objects (landmines).</li>
+                <li><strong>GPS Module:</strong> Provides precise location coordinates of detected landmines.</li>
+                <li><strong>BO Motors:</strong> Powers the mobile robotic platform for movement.</li>
+                <li><strong>Buzzer System:</strong> Provides audible alerts upon detection.</li>
+                <li><strong>IoT Protocols:</strong> Enables real-time alerts and live video streaming to a remote monitoring station.</li>
+                <li><strong>Rechargeable Battery:</strong> Ensures extended operational time.</li>
+            </ul>
+            <p class="text-light-gray">
+                This project highlights my skills in IoT, embedded systems, and robotics, demonstrating an ability to develop practical solutions for critical applications.
+            </p>
+        </div>
+    </div>
+
+    <div id="shoppingWebsiteModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 class="text-3xl font-bold mb-4">Responsive Shopping Website</h3>
+            <p class="text-light-gray mb-4">
+                This project involved developing a fully responsive portfolio website with integrated e-commerce functionalities, designed to showcase products and enhance user engagement.
+            </p>
+            <p class="text-light-gray mb-4">
+                Technologies and features:
+            </p>
+            <ul class="list-disc list-inside text-light-gray mb-4">
+                <li><strong>HTML5 & CSS3:</strong> Structured content and styled the website for a modern aesthetic.</li>
+                <li><strong>Bootstrap:</strong> Utilized for responsive design and streamlined development, ensuring compatibility across various devices.</li>
+                <li><strong>JavaScript:</strong> Implemented interactive elements, including a functional shopping cart for product demonstration.</li>
+                <li><strong>Interactive Sections:</b> Enhanced user experience with dynamic content and smooth navigation.</li>
+            </ul>
+            <p class="text-light-gray">
+                This project showcases my front-end development skills, emphasizing responsive design principles and interactive user interfaces.
+            </p>
+        </div>
+    </div>
+
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu if open
+                const mobileMenu = document.getElementById('mobile-menu');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Typing effect for hero text
+        const phrases = ["ServiceNow Developer", "Problem Solver", "Innovator"];
+        const typingTextElement = document.querySelector('.typing-text');
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+            let displayText = '';
+
+            if (isDeleting) {
+                displayText = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                displayText = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            typingTextElement.textContent = displayText;
+
+            let typingSpeed = 100;
+            if (isDeleting) {
+                typingSpeed /= 2;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typingSpeed = 1500;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typingSpeed = 500;
+            }
+
+            setTimeout(typeEffect, typingSpeed);
+        }
+
+        // Initialize typing effect when the page loads
+        document.addEventListener('DOMContentLoaded', typeEffect);
+
+
+        // Modals functionality
+        const openModalButtons = document.querySelectorAll('.open-modal-btn');
+        const closeButtons = document.querySelectorAll('.close-button');
+        const modals = {
+            aiChatbot: document.getElementById('aiChatbotModal'),
+            landmineDetection: document.getElementById('landmineDetectionModal'),
+            shoppingWebsite: document.getElementById('shoppingWebsiteModal')
+        };
+
+        openModalButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const projectKey = button.dataset.project;
+                const modal = modals[projectKey];
+                if (modal) {
+                    modal.classList.add('show');
+                }
+            });
+        });
+
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const modal = button.closest('.modal');
+                if (modal) {
+                    modal.classList.remove('show');
+                }
+            });
+        });
+
+        // Close modal when clicking outside of the content
+        Object.values(modals).forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('show');
+                }
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        });
+
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Scroll to top button functionality
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+    </script>
+</body>
+</html>
