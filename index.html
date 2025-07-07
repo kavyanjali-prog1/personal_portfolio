@@ -399,7 +399,7 @@
     <!-- Navigation Bar -->
     <nav class="bg-gray-900 shadow-lg py-4 fixed w-full z-50 top-0">
         <div class="container mx-auto flex justify-between items-center px-4">
-            <a href="#" class="text-2xl font-extrabold text-white">Kavya<span class="text-primary-blue">.</span></a>
+            <a href="#" class="text-2xl font-extrabold text-white">Kavya<span class="text-primary-blue"></span></a>
             <div class="space-x-6 hidden md:flex">
                 <a href="#about" class="nav-link">About</a>
                 <a href="#skills" class="nav-link">Skills</a>
@@ -422,8 +422,7 @@
             <a href="#achievements" class="block px-4 py-2 text-white hover:bg-gray-700">Achievements</a>
             <a href="#certifications" class="block px-4 py-2 text-white hover:bg-gray-700">Certifications</a>
             <a href="#contact" class="block px-4 py-2 text-white hover:bg-gray-700">Contact</a>
-            <!-- Download Resume Button for Mobile -->
-            <a href="https://drive.google.com/file/d/1qCs2Kgq8nQroRzMmfnDObnz0stLp69cj/view?usp=sharing" target="_blank" download="Kavya_Resume.pdf" class="block px-4 py-2 text-white hover:bg-gray-700">Download Resume <i class="fas fa-download ml-2"></i></a>
+            <a href="https://drive.google.com/file/d/1G0VKSEd19AtEAdFBmXKCJeYML2zl9AOS/view" target="_blank" download="Kavya_Resume.pdf" class="block px-4 py-2 text-white hover:bg-gray-700">Download Resume <i class="fas fa-download ml-2"></i></a>
         </div>
     </nav>
 
@@ -432,7 +431,7 @@
         <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center text-center md:text-left gap-8 md:gap-16 relative z-10">
             <!-- Left Side: Provided Image -->
             <div class="hero-image-container animate-on-scroll">
-                <img src="https://cdn.leonardo.ai/users/9d665d25-0e47-43e5-bf4f-671d7df03dae/generations/7099ba37-3602-42b1-ae0f-b6e9515eed45/Leonardo_Anime_XL_A_professional_4K_portrait_of_a_confident_yo_1.jpg" alt="Kavya's Portrait" class="hero-image">
+                <img src="https://media.licdn.com/dms/image/v2/D5603AQFV-qo_84dLiQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1726070884776?e=2147483647&v=beta&t=Iv3ySjVpqhMrA984FOBqyvqtetHRyoI0zbnTp3YKAtw" alt="Kavya's Portrait" class="hero-image">
             </div>
 
             <!-- Right Side: Name and Dynamic Text -->
@@ -445,8 +444,7 @@
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                     <a href="#projects" class="btn-primary inline-block">View My Work <i class="fas fa-arrow-right ml-2"></i></a>
-                    <!-- Download Resume Button added here -->
-                    <a href="https://drive.google.com/file/d/1qCs2Kgq8nQroRzMmfnDObnz0stLp69cj/view?usp=sharing" target="_blank" download="Kavya_Resume.pdf" class="btn-secondary inline-block">Download Resume <i class="fas fa-download ml-2"></i></a>
+                    <a href="https://drive.google.com/file/d/1G0VKSEd19AtEAdFBmXKCJeYML2zl9AOS/view" target="_blank" download="Kavya_Resume.pdf" class="btn-secondary inline-block">Download Resume <i class="fas fa-download ml-2"></i></a>
                 </div>
             </div>
         </div>
@@ -490,6 +488,7 @@
                         <span class="skill-badge"><i class="fas fa-laptop-code mr-2"></i>VS Code</span>
                         <span class="skill-badge"><i class="fas fa-microchip mr-2"></i>Arduino IDE</span>
                         <span class="skill-badge"><i class="fas fa-file-alt mr-2"></i>MS Office</span>
+                        <span class="skill-badge"><i class="fas fa-file-alt mr-2"></i>Python IDLE</span>
                     </div>
                 </div>
                 <div class="card p-6">
@@ -535,17 +534,20 @@
         <section id="projects" class="my-32 animate-on-scroll">
             <h2 class="text-4xl section-title">My Projects</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- NEW Project: Job Portal Project in ServiceNow -->
                 <div class="project-card card pb-6">
-                    <img src="https://placehold.co/600x400/1a1a1a/00bfff?text=Job+Portal+Project" alt="Job Portal Project" class="w-full">
+                    <img src="https://placehold.co/600x400/1a1a1a/00bfff?text=Job+Portal+Project" alt="Job Portal Project in ServiceNow" class="w-full">
                     <div class="p-6">
                         <h3 class="text-2xl font-semibold mb-3 text-white">Job Portal Project in ServiceNow</h3>
                         <p class="text-light-gray mb-4">
-                            Created a basic job portal using ServiceNow that allows users to view job openings and apply by submitting their resumes and application details.
+                            Developed a basic job portal on the ServiceNow platform, enabling users to view available job openings, apply for positions, and submit their resumes and application details. This project focused on foundational ServiceNow application development, including custom tables, forms, and basic security configurations for job seekers and hiring managers.
                         </p>
                         <div class="flex flex-wrap mb-4">
                             <span class="skill-badge">ServiceNow</span>
-                            <span class="skill-badge">Job Portal</span>
-                            <span class="skill-badge">Forms</span>
+                            <span class="skill-badge">HRSD</span>
+                            <span class="skill-badge">Application Development</span>
+                            <span class="skill-badge">Workflows</span>
+                            <span class="skill-badge">Security</span>
                         </div>
                         <div class="flex flex-col sm:flex-row gap-3">
                             <button class="btn-primary text-sm open-modal-btn" data-project="jobPortal">Learn More</button>
@@ -553,8 +555,9 @@
                     </div>
                 </div>
 
+                <!-- Original Projects (keeping others as is) -->
                 <div class="project-card card pb-6">
-                    <img src="https://placehold.co/600x400/1a1a1a/00bfff?text=Landmine+Detection+System" alt="Autonomous Landmine Detection" class="w-full">
+                    <img src="https://placehold.co/600x400/1a1a1a/1e90ff?text=Landmine+Detection+System" alt="Autonomous Landmine Detection" class="w-full">
                     <div class="p-6">
                         <h3 class="text-2xl font-semibold mb-3 text-white">Autonomous Landmine Detection</h3>
                         <p class="text-light-gray mb-4">
@@ -749,32 +752,78 @@
     </button>
 
     <!-- Modals for Project Details -->
-    <div id="aiChatbotModal" class="modal">
+    <!-- NEW Job Portal Modal -->
+    <div id="jobPortalModal" class="modal">
         <div class="modal-content">
-            <span class="close-button">&times;</span>
-            <h3 class="text-3xl font-bold mb-4">AI-Powered Customer Query Assistance</h3>
+            <span class="close-button" onclick="closeProjectModal('jobPortal')">&times;</span>
+            <h3 class="text-3xl font-bold mb-4">Job Portal Project in ServiceNow (Basic Level)</h3>
             <p class="text-light-gray mb-4">
-                This project involved developing an intelligent chatbot designed to streamline customer support by providing instant and accurate responses to queries.
-                It leverages Natural Language Processing (NLP) to understand user intent and Machine Learning algorithms to continuously improve its response accuracy.
+                This project involved creating a basic job portal on the ServiceNow platform, providing a streamlined process for job seekers to view and apply for job openings.
             </p>
+            <h4 class="text-xl font-semibold text-primary-blue mb-2">Step-by-Step Guide:</h4>
+            <ol class="list-decimal list-inside text-light-gray mb-4 space-y-2">
+                <li><strong>Create a new application:</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Logged in to ServiceNow instance.</li>
+                        <li>Navigated to System Applications > Create New Application.</li>
+                        <li>Filled in application details: Name "Job Portal", Description "A portal for job seekers to apply for jobs".</li>
+                    </ul>
+                </li>
+                <li><strong>Create tables:</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Created a "Job" table with fields: Job Title (string), Job Description (string), Job Requirements (string).</li>
+                        <li>Created a "Job Application" table with fields: Job (reference to Job table), Applicant Name (string), Applicant Email (string), Resume (attachment).</li>
+                    </ul>
+                </li>
+                <li><strong>Create forms:</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Created a form for the "Job" table with its fields.</li>
+                        <li>Created a form for the "Job Application" table with its fields.</li>
+                    </ul>
+                </li>
+                <li><strong>Create a job portal page:</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Navigated to Content Management > Pages.</li>
+                        <li>Created a new page for the job portal, adding a title and description.</li>
+                        <li>Added a Job List widget to display available jobs and a Job Application form for user submissions.</li>
+                    </ul>
+                </li>
+                <li><strong>Configure security:</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Created roles for job seekers and hiring managers (User Administration > Roles) with relevant permissions.</li>
+                        <li>Assigned these roles to users (User Administration > Users).</li>
+                    </ul>
+                </li>
+                <li><strong>Test and publish:</strong>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>Tested the job portal for expected functionality.</li>
+                        <li>Published the job portal page (Content Management > Pages).</li>
+                    </ul>
+                </li>
+            </ol>
             <p class="text-light-gray mb-4">
-                Key features include:
+                This basic setup allows users to view job openings, apply for jobs, and submit their resume and application details.
             </p>
+            <h4 class="text-xl font-semibold text-primary-blue mb-2">Basic Functionality:</h4>
             <ul class="list-disc list-inside text-light-gray mb-4">
-                <li><strong>Natural Language Understanding:</strong> Processes and interprets customer queries effectively.</li>
-                <li><strong>Machine Learning Integration:</strong> Uses trained models to identify intent and generate relevant responses.</li>
-                <li><strong>Personalized Support:</strong> Offers tailored solutions based on query context.</li>
-                <li><strong>Efficiency Improvement:</strong> Reduces response times and enhances customer satisfaction.</li>
+                <li>View available job openings.</li>
+                <li>Apply for jobs.</li>
+                <li>Submit their resume and application details.</li>
             </ul>
-            <p class="text-light-gray">
-                This project demonstrates my proficiency in developing AI-driven solutions and my understanding of modern chatbot architectures.
-            </p>
+            <h4 class="text-xl font-semibold text-primary-blue mb-2">Next Steps (Potential Enhancements):</h4>
+            <ul class="list-disc list-inside text-light-gray">
+                <li>Implement job search functionality.</li>
+                <li>Add application status tracking for job seekers.</li>
+                <li>Configure notifications for hiring managers.</li>
+                <li>Customize the portal's branding to match organizational guidelines.</li>
+            </ul>
         </div>
     </div>
 
+    <!-- Original Modals (keeping others as is) -->
     <div id="landmineDetectionModal" class="modal">
         <div class="modal-content">
-            <span class="close-button">&times;</span>
+            <span class="close-button" onclick="closeProjectModal('landmineDetection')">&times;</span>
             <h3 class="text-3xl font-bold mb-4">Autonomous Landmine Detection</h3>
             <p class="text-light-gray mb-4">
                 This project focuses on creating an autonomous mobile robotic platform for the detection and location tracking of landmines, significantly improving safety in demining operations.
@@ -800,7 +849,7 @@
 
     <div id="shoppingWebsiteModal" class="modal">
         <div class="modal-content">
-            <span class="close-button">&times;</span>
+            <span class="close-button" onclick="closeProjectModal('shoppingWebsite')">&times;</span>
             <h3 class="text-3xl font-bold mb-4">Responsive Shopping Website</h3>
             <p class="text-light-gray mb-4">
                 This project involved developing a fully responsive portfolio website with integrated e-commerce functionalities, designed to showcase products and enhance user engagement.
@@ -893,7 +942,7 @@
         const openModalButtons = document.querySelectorAll('.open-modal-btn');
         const closeButtons = document.querySelectorAll('.close-button');
         const modals = {
-            aiChatbot: document.getElementById('aiChatbotModal'),
+            jobPortal: document.getElementById('jobPortalModal'), // Added Job Portal modal
             landmineDetection: document.getElementById('landmineDetectionModal'),
             shoppingWebsite: document.getElementById('shoppingWebsiteModal')
         };
